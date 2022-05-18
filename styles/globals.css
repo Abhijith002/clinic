@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.modal {
+  @apply bg-opacity-40 duration-200 ease-in-out;
+  transition-property: transform, opacity;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+}
+.modal-box {
+  @apply transform  p-6 transition duration-200 ease-in-out;
+  @apply w-11/12 max-w-lg scale-90;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.modal-open .modal-box,
+.modal-toggle:checked + .modal .modal-box,
+.modal:target .modal-box {
+  @apply translate-y-0 scale-100;
+}
+.modal-action {
+  @apply mt-6 justify-end space-x-2;
+}
+.btn {
+  @apply inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring ring-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-200 ease-in-out px-8 py-3;
+  animation: button-pop var(--animation-btn, 0.25s) ease-out;
+}
+.btn-book {
+  @apply block bg-gray-800 animate-btn-pop hover:bg-gray-700 active:bg-gray-600 focus-visible:ring ring-gray-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3;
+}
+@keyframes button-pop {
+  0% {
+    transform: scale(var(--btn-focus-scale, 0.95));
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
