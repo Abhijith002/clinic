@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Logo from "./logo";
 
@@ -19,47 +20,96 @@ function Header() {
     );
   };
 
+  const router = useRouter();
+  console.log(router.asPath);
   return (
     <header className="flex justify-between items-center border-b py-4 md:py-8 mb-8 md:mb-12 xl:mb-16 sticky top-0 z-50 bg-white">
       {/* <!-- logo - start --> */}
-      <Link href="#" passHref>
+      <Link href="/" passHref>
         <Logo />
       </Link>
       {/* <!-- logo - end --> */}
 
       {/* <!-- nav - start --> */}
       <nav className="hidden lg:flex gap-12">
-        <a
+        {/* <a
           href="#"
-          className="text-green-700 border-b-2 border-green-500 text-lg font-semibold hover:border-green-500 
+          className="text-green-700 border-b-2 border-green-600 text-lg font-semibold hover:border-green-500 
           active:text-green-700 active:border-green-500 transition duration-200"
-        >
-          Home
-        </a>
+        > */}
+        <Link href="#" passHref>
+          <a
+            // href="#"
+            className={
+              router.asPath == "/" || router.asPath == "/#"
+                ? `text-green-700 border-b-2 border-green-600 text-lg font-semibold hover:border-green-500
+          active:text-green-700 active:border-green-500 transition duration-200`
+                : `text-gray-600 
+          active:text-green-700 active:border-green-500 text-lg font-semibold`
+            }
+          >
+            <span
+              className={
+                router.asPath == "/" || router.asPath == "/#"
+                  ? undefined
+                  : "link no-underline link-underline link-underline-black"
+              }
+            >
+              Home
+            </span>
+          </a>
+        </Link>
         <Link href="/#gallery" passHref>
           <a
             // href="#"
-            className="text-gray-600 border-b-2 border-transparent
-            active:text-green-700 active:border-green-500 text-lg font-semibold transition duration-200
-            hover:border-green-500"
+            className={
+              router.asPath == "/#gallery"
+                ? `text-green-700 border-b-2 border-green-600 text-lg font-semibold hover:border-green-500
+            active:text-green-700 active:border-green-500 transition duration-200`
+                : "text-gray-600 active:text-green-700 active:border-green-500 text-lg font-semibold"
+            }
           >
-            Gallery
+            <span
+              className={
+                router.asPath != "/#gallery"
+                  ? "link no-underline link-underline link-underline-black"
+                  : undefined
+              }
+            >
+              Gallery
+            </span>
           </a>
         </Link>
-        <a
-          href="#"
-          className="text-gray-600 border-b-2 border-transparent
-          hover:border-green-500 active:text-green-700 active:border-green-500 text-lg font-semibold transition duration-200"
-        >
-          Blog
-        </a>
+        <Link href="#" passHref>
+          <a
+            // href="#"
+            className="text-gray-600 
+          active:text-green-700 active:border-green-500 text-lg font-semibold"
+          >
+            <span className="link no-underline link-underline link-underline-black">
+              Blog
+            </span>
+          </a>
+        </Link>
         <Link href="/#location" passHref>
           <a
             // href="#"
-            className="transition-all text-gray-600 border-b-2 border-transparent
-          hover:border-green-500 active:text-green-700 active:border-green-500 text-lg font-semibold duration-200"
+            className={
+              router.asPath == "/#location"
+                ? `text-green-700 border-b-2 border-green-600 text-lg font-semibold hover:border-green-500
+            active:text-green-700 active:border-green-500 transition duration-200`
+                : "text-gray-600 active:text-green-700 active:border-green-500 text-lg font-semibold"
+            }
           >
-            Location
+            <span
+              className={
+                router.asPath != "/#location"
+                  ? "link no-underline link-underline link-underline-black"
+                  : undefined
+              }
+            >
+              Location
+            </span>
           </a>
         </Link>
       </nav>
@@ -67,7 +117,7 @@ function Header() {
 
       {/* <!-- buttons - start --> */}
       <Link href="#">
-        <a className="hidden lg:inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+        <a className="hidden lg:inline-block btn capitalize border-none bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
           Events
         </a>
       </Link>

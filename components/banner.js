@@ -20,10 +20,12 @@ function Banner() {
           <div className="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-2.5">
             <Link href="/#appointment" passHref>
               {/* <a className="inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring ring-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-200 ease-in-out px-8 py-3"> */}
-              <a className="btn">Book Appointment</a>
+              <a className="btn capitalize border-none inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring ring-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-200 ease-in-out px-8 py-3">
+                Book Appointment
+              </a>
             </Link>
 
-            <a className="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-green-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
+            <a className="btn inline-block border-none capitalize bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-green-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">
               Learn More
             </a>
           </div>

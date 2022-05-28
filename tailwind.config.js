@@ -32,26 +32,14 @@ module.exports = {
             transform: "translateY(300px)",
           },
         },
-        "button-pop": {
-          "0%": {
-            transform: "scale(0.95)",
-          },
-          "40%": {
-            transform: "scale(1.02)",
-          },
-          "100%": {
-            transform: "scale(1)",
-          },
-        },
       },
       animation: {
         wiggle: "wiggle 4s ease-in-out infinite",
         "wiggle-left": "wiggle-left 3s ease-in-out infinite",
         "wiggle-fast": "wiggle 2s ease-in-out infinite",
         "fade-in-down": "fade-in-down 8s ease-out infinite",
-        "btn-pop": "button-pop ease-in-out",
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
