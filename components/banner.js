@@ -13,7 +13,7 @@ function Banner() {
             Very proud to introduce
           </p>
 
-          <h1 className="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">
+          <h1 className="text-gray-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">
             An alternative medicine system of India
           </h1>
 

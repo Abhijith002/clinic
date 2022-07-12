@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Fragment } from "react";
-import { MongoClient } from "mongodb";
+// import { MongoClient } from "mongodb";
 import Banner from "../components/banner";
 import Calendar from "../components/calendar";
 import Gallery from "../components/gallery";
@@ -10,64 +10,103 @@ import UserDetails from "../components/userDetails";
 import Location from "../components/location";
 import Footer from "../components/footer";
 
-export async function getServerSideProps(context) {
-  try {
-    // Process a GET request
-    const URL = "mongodb://localhost:27017";
-    // Create a new MongoClient
-    const client = new MongoClient(URL);
-    try {
-      await client.connect();
-      // Establish and verify connection
-      const result = await client
-        .db("medic")
-        .collection("slots")
-        .find({
-          date: {
-            $gte: new Date(
-              new Date().setHours(Number("00"), Number("00"), Number("00"))
-            ),
-          },
-        })
-        .toArray();
+// export async function getServerSideProps(context) {
+//   try {
 
-      if (!result || (result && result.length === 0)) {
-        return {
-          props: {
-            result: [
-              {
-                notFound: true,
-                id: "dummy1",
-                date: new Date().toDateString(),
-                housefull: false,
-                slots: [],
-              },
-            ],
-          },
-        };
-      }
+//     // Temp code for static site
+//     return {
+//       // props: { result }, // will be passed to the page component as props
+//       props: {
+//         result: [
+//           {
+//             notFound: true,
+//             id: "dummy1",
+//             date: new Date().toDateString(),
+//             housefull: false,
+//             slots: [],
+//           },
+//         ],
+//       },
+//     };
+//     // Process a GET request
+//     // const URL = "mongodb://localhost:27017";
+//     // // Create a new MongoClient
+//     // const client = new MongoClient(URL);
+//     // try {
+//     //   await client.connect();
+//     //   // Establish and verify connection
+//     //   const result = await client
+//     //     .db("medic")
+//     //     .collection("slots")
+//     //     .find({
+//     //       date: {
+//     //         $gte: new Date(
+//     //           new Date().setHours(Number("00"), Number("00"), Number("00"))
+//     //         ),
+//     //       },
+//     //     })
+//     //     .toArray();
 
-      return {
-        // props: { result }, // will be passed to the page component as props
-        props: {
-          result: result.map((doc) => ({
-            id: doc._id.toString(),
-            date: doc.date.toString(),
-            housefull: doc.housefull,
-            slots: doc.slots,
-          })), // will be passed to the page component as props
-        },
-      };
-    } finally {
-      await client.close();
-    }
-  } catch (error) {
-    console.log("Error while fetching data");
-  }
-}
+//     //   if (!result || (result && result.length === 0)) {
+//     //     return {
+//     //       props: {
+//     //         result: [
+//     //           {
+//     //             notFound: true,
+//     //             id: "dummy1",
+//     //             date: new Date().toDateString(),
+//     //             housefull: false,
+//     //             slots: [],
+//     //           },
+//     //         ],
+//     //       },
+//     //     };
+//     //   }
 
-export default function Home({ result }) {
-  console.log(result);
+//     //   return {
+//     //     // props: { result }, // will be passed to the page component as props
+//     //     props: {
+//     //       result: result.map((doc) => ({
+//     //         id: doc._id.toString(),
+//     //         date: doc.date.toString(),
+//     //         housefull: doc.housefull,
+//     //         slots: doc.slots,
+//     //       })), // will be passed to the page component as props
+//     //     },
+//     //   };
+//     // } finally {
+//     //   await client.close();
+//     // }
+//   } catch (error) {
+//     console.log("Error while fetching data");
+//     return {
+//       // props: { result }, // will be passed to the page component as props
+//       props: {
+//         result: [
+//           {
+//             notFound: true,
+//             id: "dummy1",
+//             date: new Date().toDateString(),
+//             housefull: false,
+//             slots: [],
+//           },
+//         ],
+//       },
+//     };
+//   }
+// }
+
+export default function Home() {
+  // console.log(result);
+  let result = [
+    {
+      notFound: true,
+      id: "dummy1",
+      date: new Date().toDateString(),
+      housefull: false,
+      slots: [],
+    },
+  ]
   return (
     <Fragment>
       <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
